@@ -1,0 +1,94 @@
+/* --- RESET y COLORES BÁSICOS --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f9; /* Fondo claro */
+    color: #333;
+}
+header {
+    background-color: #004d66; /* Azul Oscuro */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* --- ESTILO DEL MENÚ DE NAVEGACIÓN --- */
+#navbar {
+    display: flex; 
+    justify-content: center;
+    background-color: #0079a1; /* Azul Intermedio */
+    padding: 10px 0;
+    flex-wrap: wrap; 
+}
+#navbar button {
+    background-color: #0079a1;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+#navbar button:hover {
+    background-color: #004d66;
+}
+
+/* --- ESTILOS DE CONTENIDO --- */
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+/* Oculta las pestañas por defecto, JS mostrará la activa */
+.pestana-contenido {
+    padding: 20px;
+    border-top: 2px solid #0079a1;
+    display: none; 
+}
+.pestana-contenido.activa {
+    display: block; 
+}
+
+/* --- ESTILOS DE TABLAS Y TEST --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+.opciones-contenedor {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.opcion-btn {
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+/* Retroalimentación */
+.opcion-btn.correcta { background-color: #28a745; color: white; }
+.opcion-btn.incorrecta { background-color: #dc3545; color: white; }
+.feedback-msg { padding: 10px; border-radius: 4px; margin-top: 5px; font-weight: bold;}
+
+/* --- RESPONSIVE (Móviles) --- */
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column; /* Apila los botones del menú */
+    }
+    #navbar button {
+        margin: 2px 0;
+    }
+}
