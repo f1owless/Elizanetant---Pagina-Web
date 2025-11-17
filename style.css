@@ -3,24 +3,44 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f9; /* Fondo claro */
+    background-color: #f4f7f9; 
     color: #333;
 }
 header {
-    background-color: #004d66; /* Azul Oscuro */
-    color: white;
-    padding: 20px 0;
+    background-color: #004d66; 
+    padding: 0; /* Quitamos padding aquí, lo ponemos en el botón */
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* --- ESTILO DEL MENÚ DE NAVEGACIÓN --- */
+/* --- ESTILOS DEL BOTÓN DEL TÍTULO --- */
+.titulo-menu {
+    background-color: #004d66; 
+    color: white;
+    border: none;
+    padding: 0;
+    width: 100%; 
+    cursor: pointer;
+    text-align: center;
+}
+.titulo-menu h1 {
+    margin: 20px 0; /* Agrega el espacio vertical al título */
+    font-size: 1.8em;
+}
+
+/* --- MENÚ DE NAVEGACIÓN --- */
 #navbar {
-    display: flex; 
+    display: none; /* <-- CAMBIO CLAVE: Ocultar por defecto */
     justify-content: center;
-    background-color: #0079a1; /* Azul Intermedio */
+    background-color: #0079a1; 
     padding: 10px 0;
     flex-wrap: wrap; 
 }
+/* CLASE PARA MOSTRAR EL MENÚ */
+#navbar.menu-visible {
+    display: flex; 
+}
+
 #navbar button {
     background-color: #0079a1;
     color: white;
@@ -44,7 +64,6 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
-/* Oculta las pestañas por defecto, JS mostrará la activa */
 .pestana-contenido {
     padding: 20px;
     border-top: 2px solid #0079a1;
@@ -81,12 +100,13 @@ th, td {
 /* Retroalimentación */
 .opcion-btn.correcta { background-color: #28a745; color: white; }
 .opcion-btn.incorrecta { background-color: #dc3545; color: white; }
+.opcion-btn.incorrecta.correcta-marcada { border: 2px solid #28a745; }
 .feedback-msg { padding: 10px; border-radius: 4px; margin-top: 5px; font-weight: bold;}
 
 /* --- RESPONSIVE (Móviles) --- */
 @media (max-width: 768px) {
     #navbar {
-        flex-direction: column; /* Apila los botones del menú */
+        flex-direction: column; 
     }
     #navbar button {
         margin: 2px 0;

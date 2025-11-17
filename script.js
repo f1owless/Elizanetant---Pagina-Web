@@ -1,13 +1,13 @@
-// --- DATOS DEL TEST (Aquí se definen las 10 preguntas) ---
+// --- DATOS DEL TEST (Completar hasta 10 preguntas) ---
 const preguntasTest = [
     {
         pregunta: "¿Cuál es el blanco molecular principal de Imatinib?",
         opciones: ["Receptor de Estrógeno", "EGFR", "JAK2", "BCR-ABL Tirosina Quinasa"],
-        respuestaCorrecta: 3, // La cuarta opción (índice 3)
+        respuestaCorrecta: 3, 
         explicacion: "Imatinib inhibe selectivamente la tirosina quinasa BCR-ABL, clave en la LMC."
     },
     {
-        pregunta: "¿En qué año fue aprobado por la FDA?",
+        pregunta: "¿En qué año fue aprobado Imatinib por la FDA?",
         opciones: ["2005", "1999", "2008", "2001"],
         respuestaCorrecta: 3,
         explicacion: "Fue aprobado en 2001 como tratamiento revolucionario."
@@ -15,22 +15,33 @@ const preguntasTest = [
     // **AQUÍ DEBES AÑADIR LAS 8 PREGUNTAS RESTANTES**
 ];
 
+// --- FUNCIÓN PARA ABRIR/CERRAR EL MENÚ (al hacer clic en el título) ---
+function toggleMenu() {
+    const navBar = document.getElementById('navbar');
+    // Si tiene la clase 'menu-visible' la quita (cierra); si no la tiene, la pone (abre).
+    navBar.classList.toggle('menu-visible');
+}
+
 // --- FUNCIONALIDAD DE LAS PESTAÑAS (TABS) ---
 function mostrarPestana(id) {
-    // 1. Oculta todo el contenido que tenga la clase 'pestana-contenido'
+    // 1. Oculta el menú después de la selección (Mejora la UX)
+    const navBar = document.getElementById('navbar');
+    navBar.classList.remove('menu-visible');
+    
+    // 2. Oculta todo el contenido
     const pestañas = document.querySelectorAll('.pestana-contenido');
     pestañas.forEach(p => {
         p.classList.remove('activa');
     });
 
-    // 2. Muestra solo la pestaña con el 'id' que se le pasó (ej. 'pestana1')
+    // 3. Muestra solo la pestaña seleccionada
     const pestanaActiva = document.getElementById(id);
     if (pestanaActiva) {
         pestanaActiva.classList.add('activa');
     }
 }
 
-// --- FUNCIONALIDAD DEL TEST ---
+// --- LÓGICA DEL TEST ---
 
 function inicializarTest() {
     const contenedor = document.getElementById('contenedor-test');
@@ -38,18 +49,16 @@ function inicializarTest() {
 
     contenedor.innerHTML = ''; 
     
-    // Genera el HTML para cada pregunta
     preguntasTest.forEach((item, index) => {
         const preguntaDiv = document.createElement('div');
         preguntaDiv.classList.add('pregunta-item');
         
         let htmlContent = `
             <h3>${index + 1}. ${item.pregunta}</h3>
-            <div class="opciones-contenedor">
+            <div id="opciones-${index}" class="opciones-contenedor">
         `;
 
         item.opciones.forEach((opcion, i) => {
-            // Crea un botón que llama a la función verificarRespuesta al hacer clic
             htmlContent += `
                 <button 
                     class="opcion-btn" 
@@ -72,8 +81,8 @@ function verificarRespuesta(botonClickeado, indicePregunta, indiceOpcion) {
     const pregunta = preguntasTest[indicePregunta];
     const feedbackMsg = document.getElementById(`feedback-${indicePregunta}`);
     
-    // Desactiva todos los botones de la pregunta para evitar múltiples respuestas
-    const botones = botonClickeado.parentNode.querySelectorAll('.opcion-btn');
+    // Desactiva todos los botones de la pregunta
+    const botones = document.getElementById(`opciones-${indicePregunta}`).querySelectorAll('.opcion-btn');
     botones.forEach(btn => {
         btn.disabled = true;
     });
@@ -81,16 +90,17 @@ function verificarRespuesta(botonClickeado, indicePregunta, indiceOpcion) {
     // 1. Si es correcta
     if (indiceOpcion === pregunta.respuestaCorrecta) {
         feedbackMsg.innerHTML = '✅ **Correcto!** ' + pregunta.explicacion;
-        feedbackMsg.style.backgroundColor = '#d4edda'; // Color de fondo verde claro
+        feedbackMsg.style.backgroundColor = '#d4edda'; 
         botonClickeado.classList.add('correcta');
     } 
     // 2. Si es incorrecta
     else {
         feedbackMsg.innerHTML = '❌ **Incorrecto.** ' + pregunta.explicacion;
-        feedbackMsg.style.backgroundColor = '#f8d7da'; // Color de fondo rojo claro
+        feedbackMsg.style.backgroundColor = '#f8d7da'; 
         botonClickeado.classList.add('incorrecta');
-        // Resalta la respuesta correcta
-        botones[pregunta.respuestaCorrecta].classList.add('correcta'); 
+        
+        // Resalta visualmente la respuesta correcta después del error
+        botones[pregunta.respuestaCorrecta].classList.add('correcta');
     }
 }
 
