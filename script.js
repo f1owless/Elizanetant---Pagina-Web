@@ -15,26 +15,15 @@ const preguntasTest = [
     // **AQUÍ DEBES AÑADIR LAS 8 PREGUNTAS RESTANTES**
 ];
 
-// --- FUNCIÓN PARA ABRIR/CERRAR EL MENÚ (al hacer clic en el título) ---
-function toggleMenu() {
-    const navBar = document.getElementById('navbar');
-    // Si tiene la clase 'menu-visible' la quita (cierra); si no la tiene, la pone (abre).
-    navBar.classList.toggle('menu-visible');
-}
-
 // --- FUNCIONALIDAD DE LAS PESTAÑAS (TABS) ---
 function mostrarPestana(id) {
-    // 1. Oculta el menú después de la selección (Mejora la UX)
-    const navBar = document.getElementById('navbar');
-    navBar.classList.remove('menu-visible');
-    
-    // 2. Oculta todo el contenido
+    // 1. Oculta todo el contenido
     const pestañas = document.querySelectorAll('.pestana-contenido');
     pestañas.forEach(p => {
         p.classList.remove('activa');
     });
 
-    // 3. Muestra solo la pestaña seleccionada
+    // 2. Muestra solo la pestaña seleccionada
     const pestanaActiva = document.getElementById(id);
     if (pestanaActiva) {
         pestanaActiva.classList.add('activa');

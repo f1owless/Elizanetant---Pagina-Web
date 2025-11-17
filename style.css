@@ -8,37 +8,23 @@ body {
 }
 header {
     background-color: #004d66; 
-    padding: 0; /* Quitamos padding aquí, lo ponemos en el botón */
+    color: white; /* Añadimos color blanco aquí */
+    padding: 20px 0; /* Restauramos el padding del encabezado */
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* --- ESTILOS DEL BOTÓN DEL TÍTULO --- */
-.titulo-menu {
-    background-color: #004d66; 
-    color: white;
-    border: none;
-    padding: 0;
-    width: 100%; 
-    cursor: pointer;
-    text-align: center;
-}
-.titulo-menu h1 {
-    margin: 20px 0; /* Agrega el espacio vertical al título */
+header h1 {
+    margin: 0; /* Aseguramos que no haya margen extra en el título */
     font-size: 1.8em;
 }
 
-/* --- MENÚ DE NAVEGACIÓN --- */
+/* --- MENÚ DE NAVEGACIÓN: Siempre visible con display: flex --- */
 #navbar {
-    display: none; /* <-- CAMBIO CLAVE: Ocultar por defecto */
+    display: flex; /* <-- CAMBIO CLAVE: Siempre visible */
     justify-content: center;
     background-color: #0079a1; 
     padding: 10px 0;
     flex-wrap: wrap; 
-}
-/* CLASE PARA MOSTRAR EL MENÚ */
-#navbar.menu-visible {
-    display: flex; 
 }
 
 #navbar button {
