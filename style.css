@@ -8,19 +8,19 @@ body {
 }
 header {
     background-color: #004d66; 
-    color: white; /* Añadimos color blanco aquí */
-    padding: 20px 0; /* Restauramos el padding del encabezado */
+    color: white; 
+    padding: 20px 0; 
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 header h1 {
-    margin: 0; /* Aseguramos que no haya margen extra en el título */
+    margin: 0; 
     font-size: 1.8em;
 }
 
 /* --- MENÚ DE NAVEGACIÓN: Siempre visible con display: flex --- */
 #navbar {
-    display: flex; /* <-- CAMBIO CLAVE: Siempre visible */
+    display: flex; 
     justify-content: center;
     background-color: #0079a1; 
     padding: 10px 0;
